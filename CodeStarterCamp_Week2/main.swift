@@ -8,4 +8,6 @@
 
 //findOverlapLottoNumbers()
 
+findRoundLottoDictionary(round: 2)
 findRoundLottoDictionary(round: 3)
+findRoundLottoDictionary(round: 2)

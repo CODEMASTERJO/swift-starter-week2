@@ -7,15 +7,15 @@
 
 import Foundation
 
-func makeLottoDictionary(round: Int) -> [String: Set<Int>] {
-    var lottoDictionary = [String: Set<Int>]()
+func makeLottoDictionary(round: Int) -> [String: Array<Int>] {
+    var lottoDictionary = [String: Array<Int>]()
     for i in 0...round{
         lottoDictionary.updateValue(makeWinningNumbers(), forKey: "\(i + 1)회차")
     }
     return lottoDictionary
 }
 
-func printRoundLottoNumbers(roundLottoNumbers: [String: Set<Int>], roundNumber: Int) {
+func printRoundLottoNumbers(roundLottoNumbers: [String: Array<Int>], roundNumber: Int) {
     if let result = roundLottoNumbers["\(roundNumber)회차"] {
         print("\(roundNumber)회차의 로또 당첨 번호는", terminator: " ")
         var resultString = String()
@@ -30,7 +30,8 @@ func printRoundLottoNumbers(roundLottoNumbers: [String: Set<Int>], roundNumber: 
     }
 }
 
+var roundLottoNumbers = makeLottoDictionary(round: 4)
+
 func findRoundLottoDictionary(round: Int) {
-    let roundLottoDictionary = makeLottoDictionary(round: 4)
-    printRoundLottoNumbers(roundLottoNumbers: roundLottoDictionary, roundNumber: round)
+    printRoundLottoNumbers(roundLottoNumbers: roundLottoNumbers, roundNumber: round)
 }
