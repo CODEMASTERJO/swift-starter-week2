@@ -10,18 +10,18 @@ import Foundation
 var myLottoNumbers: Array<Int> = [1, 2, 3, 4, 5, 6]
 
 func makeWinningNumbers() -> Array<Int> {
-    var lottoNumbersSet: Array<Int> = Array<Int>()
+    var lottoNumbersArray: Array<Int> = Array<Int>()
     
-    while lottoNumbersSet.count < 6 {
+    while lottoNumbersArray.count < 6 {
         let lottoNumber = Int.random(in:1...45)
-        if lottoNumbersSet.contains(lottoNumber) == false {
-            lottoNumbersSet.append(lottoNumber)
+        if lottoNumbersArray.contains(lottoNumber) == false {
+            lottoNumbersArray.append(lottoNumber)
         }
     }
-    return lottoNumbersSet.sorted()
+    return lottoNumbersArray.sorted()
 }
 
-func compareLottoNumbers(winning: Array<Int>, mine: Array<Int>) -> Array<Int> {
+func overlapLottoNumbers(winning: Array<Int>, mine: Array<Int>) -> Array<Int> {
     var sameLottoNumbers: Array<Int> = Array<Int>()
     for i in mine {
         if winning.contains(i) == true {
@@ -49,7 +49,7 @@ func printOverlapLottoNumbers(sameLottoNumbers: Array<Int>) {
 
 func findOverlapLottoNumbers() {
     let winningLottoNumbers = makeWinningNumbers()
-    let overlapNumbers = compareLottoNumbers(winning: winningLottoNumbers, mine: myLottoNumbers)
+    let overlapNumbers = overlapLottoNumbers(winning: winningLottoNumbers, mine: myLottoNumbers)
     printOverlapLottoNumbers(sameLottoNumbers: overlapNumbers)
     print(winningLottoNumbers.sorted())
 }
